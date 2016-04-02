@@ -122,7 +122,7 @@ namespace DataAccessLayer
                     FullTimeEmployee returnEmployeeFT = new FullTimeEmployee();
                     returnEmployeeFT.Id = employee["_id"].AsInt32;
                     returnEmployeeFT.Name = employee["empName"].AsString;
-                    returnEmployeeFT.Salary = Convert.ToInt32(employee["salary"].AsDouble);
+                    returnEmployeeFT.Salary = Convert.ToInt32(employee["salary"].AsInt32);
                     returnEmployeeFT.StartDate = employee["startDate"].AsDateTime;
                     return returnEmployeeFT;
                 case 2:
