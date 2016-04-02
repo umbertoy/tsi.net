@@ -20,5 +20,30 @@ namespace PresentationLayerWinform
         private void EmployeeList_Load(object sender, EventArgs e)
         {
         }
+
+        private void Listar_Empleados(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Actualizar_Empleados(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Agregar_Empleados(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Modificar_Empleados(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Eliminar_Empleados(object sender, EventArgs e)
+        {
+
+        }
     }
 }

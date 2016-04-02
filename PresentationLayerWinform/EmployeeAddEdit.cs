@@ -21,5 +21,10 @@ namespace PresentationLayerWinform
         {
 
         }
+
+        private void Crear_Empleados(object sender, EventArgs e)
+        {
+
+        }
     }
 }
