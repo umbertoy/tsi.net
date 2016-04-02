@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PresentationLayerWinform.ServiceEmployees;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,9 @@ namespace PresentationLayerWinform
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
+            ServiceEmployeesClient servicio= new ServiceEmployeesClient();
+            Employee[] employees = servicio.GetAllEmployees();
+            //hacer lo que venga
         }
 
         private void Listar_Empleados(object sender, EventArgs e)

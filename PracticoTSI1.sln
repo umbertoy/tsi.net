@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{E09D6C36-A3C2-4B9C-A407-D57E483A911C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayerWinform", "PresentationLayerWinform\PresentationLayerWinform.csproj", "{9D716F2C-DC6A-4B4E-8952-5D560D79C48C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E09D6C36-A3C2-4B9C-A407-D57E483A911C} = {E09D6C36-A3C2-4B9C-A407-D57E483A911C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pruebas", "Pruebas\Pruebas.csproj", "{BDF38803-F55F-4EEE-A004-5BFB34B44ABF}"
 EndProject
