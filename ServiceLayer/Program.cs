@@ -37,6 +37,15 @@ namespace ServiceLayer
             ServiceHost serviceHost = new ServiceHost(typeof(ServiceEmployees), baseAddress);
             serviceHost.AddServiceEndpoint(typeof(IServiceEmployees), binding, address);
             serviceHost.Open();
+
+            // The service can now be accessed.
+            Console.WriteLine("The service is ready.");
+            Console.WriteLine("Press <ENTER> to terminate service.");
+            Console.WriteLine();
+            Console.ReadLine();
+
+            // Close the ServiceHostBase to shutdown the service.
+            serviceHost.Close();
         }
     }
 }
