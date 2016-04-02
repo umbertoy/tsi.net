@@ -26,6 +26,17 @@ namespace ServiceLayer
 
         private static void SetupService()
         {
+            BasicHttpBinding binding = new BasicHttpBinding();
+            binding.Name = "pruebaBinding";
+            binding.HostNameComparisonMode = HostNameComparisonMode.StrongWildcard;
+            binding.Security.Mode = BasicHttpSecurityMode.None;
+
+            Uri baseAddress = new Uri("http://127.0.0.1:8181/tsi-net-01/service");
+            Uri address = new Uri("http://127.0.0.1:8181/tsi-net-01/service/Employees");
+
+            ServiceHost serviceHost = new ServiceHost(typeof(ServiceEmployees), baseAddress);
+            serviceHost.AddServiceEndpoint(typeof(IServiceEmployees), binding, address);
+            serviceHost.Open();
         }
     }
 }

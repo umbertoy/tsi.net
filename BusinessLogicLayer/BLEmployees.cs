@@ -10,7 +10,13 @@ namespace BusinessLogicLayer
 {
     public class BLEmployees : IBLEmployees
     {
-       private IDALEmployees _dal;
+        private IDALEmployees _dal;
+
+        public BLEmployees()
+        {
+            _dal = new DALEmployeesEF();
+        }
+
 
         public BLEmployees(IDALEmployees dal)
         {
@@ -19,32 +25,74 @@ namespace BusinessLogicLayer
 
         public void AddEmployee(Employee emp)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _dal.AddEmployee(emp);
+            }
+            catch (Exception e)
+            {
+                throw new BusinessException("Error desconocido", e);
+            }
         }
 
         public void DeleteEmployee(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _dal.DeleteEmployee(id);
+            }
+            catch (Exception e)
+            {
+                throw new BusinessException("Error desconocido", e);
+            }
         }
 
         public void UpdateEmployee(Employee emp)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _dal.UpdateEmployee(emp);
+            }
+            catch (Exception e)
+            {
+                throw new BusinessException("Error desconocido", e);
+            }
         }
 
         public List<Employee> GetAllEmployees()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _dal.GetAllEmployees();
+            }
+            catch (Exception e)
+            {
+                throw new BusinessException("Error desconocido", e);
+            }
         }
 
         public Employee GetEmployee(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _dal.GetEmployee(id);
+            }
+            catch (Exception e)
+            {
+                throw new BusinessException("Error desconocido", e);
+            }
         }
 
         public double CalcPartTimeEmployeeSalary(int idEmployee, int hours)
         {
-            throw new NotImplementedException();
+            Employee emp = GetEmployee(idEmployee);
+            if (emp != null || emp.GetType() == typeof(PartTimeEmployee))
+            {
+                PartTimeEmployee pre = (PartTimeEmployee)emp;
+                return hours * pre.HourlyRate;
+            }
+
+            throw new BusinessException("No es un empleado valido");
         }
     }
 }
