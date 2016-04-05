@@ -31,10 +31,10 @@
             this.BListar = new System.Windows.Forms.Button();
             this.BEliminar = new System.Windows.Forms.Button();
             this.BModificar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.GrillaEmpleados = new System.Windows.Forms.DataGridView();
             this.BAgregar = new System.Windows.Forms.Button();
             this.BActualizar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GrillaEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
             // BListar
@@ -67,13 +67,13 @@
             this.BModificar.UseVisualStyleBackColor = true;
             this.BModificar.Click += new System.EventHandler(this.Modificar_Empleados);
             // 
-            // dataGridView1
+            // GrillaEmpleados
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(31, 50);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 3;
+            this.GrillaEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GrillaEmpleados.Location = new System.Drawing.Point(31, 50);
+            this.GrillaEmpleados.Name = "GrillaEmpleados";
+            this.GrillaEmpleados.Size = new System.Drawing.Size(240, 150);
+            this.GrillaEmpleados.TabIndex = 3;
             // 
             // BAgregar
             // 
@@ -102,14 +102,14 @@
             this.ClientSize = new System.Drawing.Size(313, 262);
             this.Controls.Add(this.BActualizar);
             this.Controls.Add(this.BAgregar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.GrillaEmpleados);
             this.Controls.Add(this.BModificar);
             this.Controls.Add(this.BEliminar);
             this.Controls.Add(this.BListar);
             this.Name = "EmployeeList";
             this.Text = "EmployeeList";
             this.Load += new System.EventHandler(this.EmployeeList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GrillaEmpleados)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -119,7 +119,7 @@
         private System.Windows.Forms.Button BListar;
         private System.Windows.Forms.Button BEliminar;
         private System.Windows.Forms.Button BModificar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView GrillaEmpleados;
         private System.Windows.Forms.Button BAgregar;
         private System.Windows.Forms.Button BActualizar;
     }

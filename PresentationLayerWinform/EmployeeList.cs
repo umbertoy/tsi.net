@@ -20,9 +20,11 @@ namespace PresentationLayerWinform
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
+            
             ServiceEmployeesClient servicio= new ServiceEmployeesClient();
             Employee[] employees = servicio.GetAllEmployees();
             //hacer lo que venga
+           
         }
 
         private void Listar_Empleados(object sender, EventArgs e)
@@ -38,11 +40,15 @@ namespace PresentationLayerWinform
         private void Agregar_Empleados(object sender, EventArgs e)
         {
 
+            EmployeeAddEdit ventana = new EmployeeAddEdit();
+            ventana.Show();
+
         }
 
         private void Modificar_Empleados(object sender, EventArgs e)
         {
-
+            EmployeeAddEdit ventana = new EmployeeAddEdit();
+            ventana.Show();
         }
 
         private void Eliminar_Empleados(object sender, EventArgs e)
