@@ -33,11 +33,11 @@
             this.LSalario = new System.Windows.Forms.Label();
             this.LTipo = new System.Windows.Forms.Label();
             this.LTarifa = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.inputNombre = new System.Windows.Forms.TextBox();
+            this.inputSalario = new System.Windows.Forms.TextBox();
+            this.inputTarifa = new System.Windows.Forms.TextBox();
+            this.inputTipo = new System.Windows.Forms.ComboBox();
+            this.inputFechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.BCrear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -87,41 +87,44 @@
             this.LTarifa.TabIndex = 4;
             this.LTarifa.Text = "Tarifa";
             // 
-            // textBox1
+            // inputNombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(92, 87);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
+            this.inputNombre.Location = new System.Drawing.Point(92, 87);
+            this.inputNombre.Name = "inputNombre";
+            this.inputNombre.Size = new System.Drawing.Size(100, 20);
+            this.inputNombre.TabIndex = 5;
             // 
-            // textBox2
+            // inputSalario
             // 
-            this.textBox2.Location = new System.Drawing.Point(92, 123);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 6;
+            this.inputSalario.Location = new System.Drawing.Point(92, 123);
+            this.inputSalario.Name = "inputSalario";
+            this.inputSalario.Size = new System.Drawing.Size(100, 20);
+            this.inputSalario.TabIndex = 6;
+            this.inputSalario.EnabledChanged += new System.EventHandler(this.inputSalario_EnabledChanged);
             // 
-            // textBox3
+            // inputTarifa
             // 
-            this.textBox3.Location = new System.Drawing.Point(92, 159);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
+            this.inputTarifa.Location = new System.Drawing.Point(92, 159);
+            this.inputTarifa.Name = "inputTarifa";
+            this.inputTarifa.Size = new System.Drawing.Size(100, 20);
+            this.inputTarifa.TabIndex = 7;
+            this.inputTarifa.EnabledChanged += new System.EventHandler(this.inputTarifa_EnabledChanged);
             // 
-            // comboBox1
+            // inputTipo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(92, 43);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
+            this.inputTipo.FormattingEnabled = true;
+            this.inputTipo.Location = new System.Drawing.Point(92, 43);
+            this.inputTipo.Name = "inputTipo";
+            this.inputTipo.Size = new System.Drawing.Size(121, 21);
+            this.inputTipo.TabIndex = 8;
+            this.inputTipo.TextChanged += new System.EventHandler(this.comboBox1_ValueMemberChanged);
             // 
-            // dateTimePicker1
+            // inputFechaIngreso
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(115, 208);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 9;
+            this.inputFechaIngreso.Location = new System.Drawing.Point(115, 208);
+            this.inputFechaIngreso.Name = "inputFechaIngreso";
+            this.inputFechaIngreso.Size = new System.Drawing.Size(200, 20);
+            this.inputFechaIngreso.TabIndex = 9;
             // 
             // BCrear
             // 
@@ -139,11 +142,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 311);
             this.Controls.Add(this.BCrear);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.inputFechaIngreso);
+            this.Controls.Add(this.inputTipo);
+            this.Controls.Add(this.inputTarifa);
+            this.Controls.Add(this.inputSalario);
+            this.Controls.Add(this.inputNombre);
             this.Controls.Add(this.LTarifa);
             this.Controls.Add(this.LTipo);
             this.Controls.Add(this.LSalario);
@@ -164,11 +167,11 @@
         private System.Windows.Forms.Label LSalario;
         private System.Windows.Forms.Label LTipo;
         private System.Windows.Forms.Label LTarifa;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox inputNombre;
+        private System.Windows.Forms.TextBox inputSalario;
+        private System.Windows.Forms.TextBox inputTarifa;
+        private System.Windows.Forms.ComboBox inputTipo;
+        private System.Windows.Forms.DateTimePicker inputFechaIngreso;
         private System.Windows.Forms.Button BCrear;
     }
 }
