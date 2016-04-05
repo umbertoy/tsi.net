@@ -39,6 +39,7 @@
             this.inputTipo = new System.Windows.Forms.ComboBox();
             this.inputFechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.BCrear = new System.Windows.Forms.Button();
+            this.BGuardar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LNombre
@@ -128,7 +129,7 @@
             // 
             // BCrear
             // 
-            this.BCrear.Location = new System.Drawing.Point(115, 257);
+            this.BCrear.Location = new System.Drawing.Point(56, 257);
             this.BCrear.Name = "BCrear";
             this.BCrear.Size = new System.Drawing.Size(75, 23);
             this.BCrear.TabIndex = 10;
@@ -136,11 +137,22 @@
             this.BCrear.UseVisualStyleBackColor = true;
             this.BCrear.Click += new System.EventHandler(this.Crear_Empleados);
             // 
+            // BGuardar
+            // 
+            this.BGuardar.Location = new System.Drawing.Point(164, 257);
+            this.BGuardar.Name = "BGuardar";
+            this.BGuardar.Size = new System.Drawing.Size(83, 23);
+            this.BGuardar.TabIndex = 11;
+            this.BGuardar.Text = "Guardar";
+            this.BGuardar.UseVisualStyleBackColor = true;
+            this.BGuardar.Click += new System.EventHandler(this.Guardar_Datos);
+            // 
             // EmployeeAddEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 311);
+            this.Controls.Add(this.BGuardar);
             this.Controls.Add(this.BCrear);
             this.Controls.Add(this.inputFechaIngreso);
             this.Controls.Add(this.inputTipo);
@@ -173,5 +185,6 @@
         private System.Windows.Forms.ComboBox inputTipo;
         private System.Windows.Forms.DateTimePicker inputFechaIngreso;
         private System.Windows.Forms.Button BCrear;
+        private System.Windows.Forms.Button BGuardar;
     }
 }
