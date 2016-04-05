@@ -22,6 +22,8 @@ namespace PresentationLayerWinform
             InitializeComponent();
         }
 
+
+
         private void EmployeeAddEdit_Load(object sender, EventArgs e)
         {
             inputTipo.Items.Add(StrFullTimeEmployee);
@@ -79,6 +81,10 @@ namespace PresentationLayerWinform
             inputTarifa.Text = "";
         }
 
+        private void Guardar_Datos(object sender, EventArgs e) {
+
+        }
+
         private bool validateData() {
             int testSalario;
             double testTarifa;
@@ -92,7 +98,7 @@ namespace PresentationLayerWinform
             {
                 dataValida = false;
                 MessageBox.Show("Nombre no puede ser vacío", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        }
             else if (inputTipo.Text.Equals(StrFullTimeEmployee))
             {
                 if (inputSalario.Text.Equals(""))

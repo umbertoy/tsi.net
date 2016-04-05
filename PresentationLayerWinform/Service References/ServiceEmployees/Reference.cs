@@ -205,11 +205,16 @@ namespace PresentationLayerWinform.ServiceEmployees {
         public ServiceEmployeesClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
-        
+
+
+        //Operaciones de empleados
+
+
         public void AddEmployee(PresentationLayerWinform.ServiceEmployees.Employee emp) {
             base.Channel.AddEmployee(emp);
         }
-        
+      
+
         public System.Threading.Tasks.Task AddEmployeeAsync(PresentationLayerWinform.ServiceEmployees.Employee emp) {
             return base.Channel.AddEmployeeAsync(emp);
         }
