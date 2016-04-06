@@ -22,7 +22,7 @@ namespace Pruebas
             dal.AddEmployee(part);
             DALEmployeesMongo dal = new DALEmployeesMongo();
             dal.DeleteEmployee(5);*/
-            DALEmployeesMongo dal = new DALEmployeesMongo();
+            DALEmployeesEF dal = new DALEmployeesEF();
             Employee emp = dal.GetEmployee(1);
 
 
