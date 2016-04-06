@@ -34,6 +34,7 @@
             this.GrillaEmpleados = new System.Windows.Forms.DataGridView();
             this.BAgregar = new System.Windows.Forms.Button();
             this.BActualizar = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,6 +123,7 @@
         private System.Windows.Forms.DataGridView GrillaEmpleados;
         private System.Windows.Forms.Button BAgregar;
         private System.Windows.Forms.Button BActualizar;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
