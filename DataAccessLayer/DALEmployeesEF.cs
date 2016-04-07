@@ -16,8 +16,7 @@ namespace DataAccessLayer
 
         public void AddEmployee(Employee emp)
         {
-            
-            if(emp.GetType() == typeof(FullTimeEmployee))
+            if (emp.GetType() == typeof(FullTimeEmployee))
             {
                 FullTimeEmployee empFT = (FullTimeEmployee)emp;
                 FullTimeEmployeeTPH empFTTPH = new FullTimeEmployeeTPH();
@@ -39,8 +38,14 @@ namespace DataAccessLayer
                 dbContext.EmployeesTPH.Add(empPTTPH);
 
             }
-
-            dbContext.SaveChanges();
+            try
+            {
+                dbContext.SaveChanges();
+            }
+            catch (Exception e) {
+                e.GetBaseException();
+            }
+            
         }
 
         public void DeleteEmployee(int id)
