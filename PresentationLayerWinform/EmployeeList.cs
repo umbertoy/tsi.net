@@ -37,10 +37,11 @@ namespace PresentationLayerWinform
                 bindingSource1.Add(empleado);
             }
             //inicializar
-
-                GrillaEmpleados.AutoGenerateColumns = false;
-                GrillaEmpleados.AutoSize = true;
-                GrillaEmpleados.DataSource = bindingSource1;
+            GrillaEmpleados.AllowUserToAddRows = false;
+            GrillaEmpleados.EditMode = DataGridViewEditMode.EditProgrammatically;
+            GrillaEmpleados.AutoGenerateColumns = false;
+            GrillaEmpleados.AutoSize = true;
+            GrillaEmpleados.DataSource = bindingSource1;
 
 
             agregar_columna("id", "Id");
