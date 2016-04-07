@@ -124,6 +124,8 @@
         private System.Windows.Forms.Button BAgregar;
         private System.Windows.Forms.Button BActualizar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+
+        
     }
 }
 

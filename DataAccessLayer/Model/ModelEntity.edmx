@@ -9,10 +9,10 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="START_DATE" Type="datetime" Nullable="false" />
-          <Property Name="SALARY" Type="int" />
+          <Property Name="START_DATE" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SALARY" Type="float" />
           <Property Name="RATE" Type="float" />
           <Property Name="TYPE_EMP" Type="int" Nullable="false" />
         </EntityType>
@@ -32,7 +32,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="START_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="START_DATE" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="FullTimeEmployeeTPH" BaseType="pruebasModel.EmployeesTPH" >
           <Property Name="SALARY" Type="Int32" />

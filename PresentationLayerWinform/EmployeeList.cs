@@ -32,15 +32,26 @@ namespace PresentationLayerWinform
             
             ServiceEmployeesClient servicio= new ServiceEmployeesClient();
             Employee[] employees = servicio.GetAllEmployees();
-            foreach(Employee empleado in employees)
+            bindingSource1.DataSource = typeof(Employee);
+            foreach (Employee empleado in employees)
             {
-                bindingSource1.Add(empleado);
+                try
+                {
+                    
+                    bindingSource1.Add((Employee)empleado);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                
             }
             //inicializar
-
-                GrillaEmpleados.AutoGenerateColumns = false;
-                GrillaEmpleados.AutoSize = true;
-                GrillaEmpleados.DataSource = bindingSource1;
+            GrillaEmpleados.AllowUserToAddRows = false;
+            GrillaEmpleados.EditMode = DataGridViewEditMode.EditProgrammatically;
+            GrillaEmpleados.AutoGenerateColumns = false;
+            GrillaEmpleados.AutoSize = true;
+            GrillaEmpleados.DataSource = bindingSource1;
 
 
             agregar_columna("id", "Id");

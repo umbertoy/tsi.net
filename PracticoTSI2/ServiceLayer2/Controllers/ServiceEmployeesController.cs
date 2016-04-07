@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ServiceLayer2.Controllers
 {
+    [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
     public class ServiceEmployeesController : ApiController
     {
         //// GET api/<controller>
@@ -35,22 +37,22 @@ namespace ServiceLayer2.Controllers
 
 
 
-        public void AddEmployee(Employee emp)
+        public void Post(Employee emp)
         {
             IBLEmployees blHandler = new BLEmployees(new DataAccessLayer.DALEmployeesEF());
             blHandler.AddEmployee(emp);
         }
 
-        public void DeleteEmployee(int id)
-        {
-            IBLEmployees blHandler = new BLEmployees(new DataAccessLayer.DALEmployeesEF());
-            blHandler.DeleteEmployee(id);
-        }
-
-        public void UpdateEmployee(Employee emp)
+        public void Put(int id, Employee emp)
         {
             IBLEmployees blHandler = new BLEmployees(new DataAccessLayer.DALEmployeesEF());
             blHandler.UpdateEmployee(emp);
+        }
+
+        public void Delete(int id)
+        {
+            IBLEmployees blHandler = new BLEmployees(new DataAccessLayer.DALEmployeesEF());
+            blHandler.DeleteEmployee(id);
         }
 
         public double CalcPartTimeEmployeeSalary(int idEmployee, int hours)
