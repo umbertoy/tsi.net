@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PresentationLayerWinform.ServiceEmployees; 
+using PresentationLayerWinform.ServiceEmployees;
+using PresentationLayerWinform.Models;
 
 namespace PresentationLayerWinform
 {
     public partial class EmployeeAddEdit : Form
     {
-        private static String StrFullTimeEmployee = "Full-Time";
-        private static String StrPartTimeEmployee = "Part-Time";
 
 
         public EmployeeAddEdit()
@@ -26,8 +25,8 @@ namespace PresentationLayerWinform
 
         private void EmployeeAddEdit_Load(object sender, EventArgs e)
         {
-            inputTipo.Items.Add(StrFullTimeEmployee);
-            inputTipo.Items.Add(StrPartTimeEmployee);
+            inputTipo.Items.Add(Constantes.StrFullTimeEmployee);
+            inputTipo.Items.Add(Constantes.StrPartTimeEmployee);
             inputTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             this.StartPosition = FormStartPosition.CenterScreen;
         }
@@ -36,7 +35,7 @@ namespace PresentationLayerWinform
         {
             if (this.validateData()) {
                 ServiceEmployeesClient servicio = new ServiceEmployeesClient();
-                if (inputTipo.Text.Equals(StrFullTimeEmployee))
+                if (inputTipo.Text.Equals(Constantes.StrFullTimeEmployee))
                 {
                     FullTimeEmployee emp = new FullTimeEmployee();
                     emp.Name = inputNombre.Text;
@@ -44,7 +43,7 @@ namespace PresentationLayerWinform
                     emp.Salary = Int32.Parse(inputSalario.Text);
                     servicio.AddEmployee(emp);
                 }
-                else if(inputTipo.Text.Equals(StrFullTimeEmployee))
+                else if(inputTipo.Text.Equals(Constantes.StrPartTimeEmployee))
                 {
                     PartTimeEmployee emp = new PartTimeEmployee();
                     emp.Name = inputNombre.Text;
@@ -59,12 +58,12 @@ namespace PresentationLayerWinform
 
         private void comboBox1_ValueMemberChanged(object sender, EventArgs e)
         {
-            if (inputTipo.Text.Equals(StrFullTimeEmployee))
+            if (inputTipo.Text.Equals(Constantes.StrFullTimeEmployee))
             {
                 inputTarifa.Enabled = false;
                 inputSalario.Enabled = true;
             }
-            else if (inputTipo.Text.Equals(StrPartTimeEmployee)) {
+            else if (inputTipo.Text.Equals(Constantes.StrPartTimeEmployee)) {
                 inputTarifa.Enabled = true;
                 inputSalario.Enabled = false;
             }
@@ -99,12 +98,12 @@ namespace PresentationLayerWinform
                 dataValida = false;
                 MessageBox.Show("Nombre no puede ser vacío", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-            else if (inputTipo.Text.Equals(StrFullTimeEmployee))
+            else if (inputTipo.Text.Equals(Constantes.StrFullTimeEmployee))
             {
                 if (inputSalario.Text.Equals(""))
                 {
                     dataValida = false;
-                    MessageBox.Show("Salario no puede ser vacío si el tipo es " + StrFullTimeEmployee, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Salario no puede ser vacío si el tipo es " + Constantes.StrFullTimeEmployee, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (!Int32.TryParse(inputSalario.Text, out testSalario))
                 {
@@ -112,12 +111,12 @@ namespace PresentationLayerWinform
                     MessageBox.Show("Salario debe ser un numero entero", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (inputTipo.Text.Equals(StrPartTimeEmployee))
+            else if (inputTipo.Text.Equals(Constantes.StrPartTimeEmployee))
             {
                 if (inputTarifa.Text.Equals(""))
                 {
                     dataValida = false;
-                    MessageBox.Show("Salario no puede ser vacío si el tipo es " + StrPartTimeEmployee, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Salario no puede ser vacío si el tipo es " + Constantes.StrPartTimeEmployee, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (!Double.TryParse(inputTarifa.Text, out testTarifa))
                 {

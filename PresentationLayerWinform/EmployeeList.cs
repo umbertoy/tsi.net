@@ -1,4 +1,5 @@
-﻿using PresentationLayerWinform.ServiceEmployees;
+﻿using PresentationLayerWinform.Models;
+using PresentationLayerWinform.ServiceEmployees;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,13 +33,14 @@ namespace PresentationLayerWinform
             
             ServiceEmployeesClient servicio= new ServiceEmployeesClient();
             Employee[] employees = servicio.GetAllEmployees();
-            bindingSource1.DataSource = typeof(Employee);
+            bindingSource1.DataSource = typeof(EmployeeData);
             foreach (Employee empleado in employees)
             {
+                EmployeeData employeeData= loadEmployeeData(empleado);
                 try
                 {
                     
-                    bindingSource1.Add((Employee)empleado);
+                    bindingSource1.Add(employeeData);
                 }
                 catch(Exception ex)
                 {
@@ -54,9 +56,10 @@ namespace PresentationLayerWinform
             GrillaEmpleados.DataSource = bindingSource1;
 
 
-            agregar_columna("id", "Id");
-            agregar_columna("Nombre", "Name");
-            agregar_columna("Fecha Ingreso", "StartDate");
+            agregar_columna("id", "id");
+            agregar_columna("Nombre", "nombre");
+            agregar_columna("Fecha Ingreso", "fechaIngreso");
+            agregar_columna("Tipo","tipo");
 
             //hacer lo que venga
 
@@ -97,6 +100,16 @@ namespace PresentationLayerWinform
             column.DataPropertyName = nombrepropiedad;
             column.Name = nombrepropiedad;
             GrillaEmpleados.Columns.Add(column);
+        }
+    
+        private EmployeeData loadEmployeeData(Employee empleado)
+        {
+            EmployeeData employeeData = new EmployeeData();
+            employeeData.id = empleado.Id;
+            employeeData.nombre = empleado.Name;
+            employeeData.fechaIngreso = empleado.StartDate;
+            employeeData.tipo = empleado.GetType() == typeof(FullTimeEmployee) ? Constantes.StrFullTimeEmployee : Constantes.StrPartTimeEmployee;
+            return employeeData;
         }
     }
 }
