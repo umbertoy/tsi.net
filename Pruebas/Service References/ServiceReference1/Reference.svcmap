@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c88f2e8e-e407-4d56-9bbf-9d42df0e90f2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://127.0.0.1:8181/tsi-net-01-service" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="tsi-net-01-service.xsd" MetadataType="Schema" ID="bdbab5e1-be26-4e2f-88f8-650ba52d0eeb" SourceId="1" SourceUrl="http://127.0.0.1:8181/tsi-net-01-service?xsd=xsd2" />
+    <MetadataFile FileName="tsi-net-01-service.disco" MetadataType="Disco" ID="b0ea48b4-ad86-43b2-a5ac-6c88c771efe2" SourceId="1" SourceUrl="http://127.0.0.1:8181/tsi-net-01-service?disco" />
+    <MetadataFile FileName="tsi-net-01-service1.xsd" MetadataType="Schema" ID="8545d780-dd93-4cd2-bc82-37c4a99b5fdf" SourceId="1" SourceUrl="http://127.0.0.1:8181/tsi-net-01-service?xsd=xsd0" />
+    <MetadataFile FileName="tsi-net-01-service2.xsd" MetadataType="Schema" ID="6e24bdb0-1e12-493c-a1c2-18accf899551" SourceId="1" SourceUrl="http://127.0.0.1:8181/tsi-net-01-service?xsd=xsd1" />
+    <MetadataFile FileName="ServiceEmployees.wsdl" MetadataType="Wsdl" ID="12a7ae6e-c26d-4637-a67c-d4bc1d078a34" SourceId="1" SourceUrl="http://127.0.0.1:8181/tsi-net-01-service?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

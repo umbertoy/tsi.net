@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceEmployees" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://127.0.0.1:8181/tsi-net-01-service?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://127.0.0.1:8181/tsi-net-01-service?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://127.0.0.1:8181/tsi-net-01-service?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Shared.Entities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiceEmployees_AddEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_AddEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_DeleteEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_DeleteEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_UpdateEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_UpdateEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_GetAllEmployees_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEmployees" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_GetAllEmployees_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_GetEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_GetEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_CalcPartTimeEmployeeSalary_InputMessage">
+    <wsdl:part name="parameters" element="tns:CalcPartTimeEmployeeSalary" />
+  </wsdl:message>
+  <wsdl:message name="IServiceEmployees_CalcPartTimeEmployeeSalary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CalcPartTimeEmployeeSalaryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServiceEmployees">
+    <wsdl:operation name="AddEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceEmployees/AddEmployee" message="tns:IServiceEmployees_AddEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceEmployees/AddEmployeeResponse" message="tns:IServiceEmployees_AddEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceEmployees/DeleteEmployee" message="tns:IServiceEmployees_DeleteEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceEmployees/DeleteEmployeeResponse" message="tns:IServiceEmployees_DeleteEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceEmployees/UpdateEmployee" message="tns:IServiceEmployees_UpdateEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceEmployees/UpdateEmployeeResponse" message="tns:IServiceEmployees_UpdateEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployees">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceEmployees/GetAllEmployees" message="tns:IServiceEmployees_GetAllEmployees_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceEmployees/GetAllEmployeesResponse" message="tns:IServiceEmployees_GetAllEmployees_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceEmployees/GetEmployee" message="tns:IServiceEmployees_GetEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceEmployees/GetEmployeeResponse" message="tns:IServiceEmployees_GetEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CalcPartTimeEmployeeSalary">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceEmployees/CalcPartTimeEmployeeSalary" message="tns:IServiceEmployees_CalcPartTimeEmployeeSalary_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceEmployees/CalcPartTimeEmployeeSalaryResponse" message="tns:IServiceEmployees_CalcPartTimeEmployeeSalary_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="pruebaBinding_IServiceEmployees" type="tns:IServiceEmployees">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddEmployee">
+      <soap:operation soapAction="http://tempuri.org/IServiceEmployees/AddEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmployee">
+      <soap:operation soapAction="http://tempuri.org/IServiceEmployees/DeleteEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmployee">
+      <soap:operation soapAction="http://tempuri.org/IServiceEmployees/UpdateEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployees">
+      <soap:operation soapAction="http://tempuri.org/IServiceEmployees/GetAllEmployees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployee">
+      <soap:operation soapAction="http://tempuri.org/IServiceEmployees/GetEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcPartTimeEmployeeSalary">
+      <soap:operation soapAction="http://tempuri.org/IServiceEmployees/CalcPartTimeEmployeeSalary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceEmployees">
+    <wsdl:port name="pruebaBinding_IServiceEmployees" binding="tns:pruebaBinding_IServiceEmployees">
+      <soap:address location="http://127.0.0.1:8181/tsi-net-01-service/Employees" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
