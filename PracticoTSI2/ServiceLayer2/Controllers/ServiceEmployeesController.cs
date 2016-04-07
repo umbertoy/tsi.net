@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ServiceLayer2.Controllers
 {
+    [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
     public class ServiceEmployeesController : ApiController
     {
         //// GET api/<controller>
