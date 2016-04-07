@@ -32,9 +32,19 @@ namespace PresentationLayerWinform
             
             ServiceEmployeesClient servicio= new ServiceEmployeesClient();
             Employee[] employees = servicio.GetAllEmployees();
-            foreach(Employee empleado in employees)
+            bindingSource1.DataSource = typeof(Employee);
+            foreach (Employee empleado in employees)
             {
-                bindingSource1.Add(empleado);
+                try
+                {
+                    
+                    bindingSource1.Add((Employee)empleado);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                
             }
             //inicializar
             GrillaEmpleados.AllowUserToAddRows = false;
