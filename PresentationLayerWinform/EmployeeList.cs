@@ -115,12 +115,46 @@ namespace PresentationLayerWinform
         private void Modificar_Empleados(object sender, EventArgs e)
         {
             EmployeeAddEdit ventana = new EmployeeAddEdit();
-            ventana.Show();
+            var row = GrillaEmpleados.CurrentRow;
+            var txt1 = ventana.Controls["inputNombre"];
+            var txt2 = ventana.Controls["inputTipo"];
+            var txt3 = ventana.Controls["LTipo"];
+            var txt4 = ventana.Controls["inputTarifa"];
+            var txt5 = ventana.Controls["inputSalario"];
+            txt1.Text = row.Cells[1].Value.ToString();
+            txt2.Text = row.Cells[3].Value.ToString();
+            txt2.Enabled = false;
+            
+            //txt2.Visible = false;
+            txt3.Visible = false;
+
+            if (txt2.Equals(Constantes.StrFullTimeEmployee))
+            {
+                txt4.Enabled = false;
+                txt5.Enabled = true;
+            }
+            else if (txt2.Equals(Constantes.StrPartTimeEmployee))
+            {
+                txt4.Enabled = true;
+                txt5.Enabled = false;
+            }
+            //ventana.Controls["inputTipo"] = txt1.Text;
+            //if(ventana.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    row.Cells[3].Value = txt1.Text;
+            //}
+            ventana.ShowDialog();
         }
 
         private void Eliminar_Empleados(object sender, EventArgs e)
         {
             var row = GrillaEmpleados.CurrentRow;
+            
+
+            //ELIMINAR DE SQL
+            ServiceEmployeesClient servicio = new ServiceEmployeesClient();
+            servicio.DeleteEmployee(int.Parse(row.Cells[0].Value.ToString()));
+
             GrillaEmpleados.Rows.Remove(row);
         }
 
