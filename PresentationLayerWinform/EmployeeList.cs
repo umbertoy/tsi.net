@@ -48,6 +48,9 @@ namespace PresentationLayerWinform
                 }
                 
             }
+
+            GrillaEmpleados.ScrollBars= ScrollBars.Vertical;
+            
             //inicializar
             GrillaEmpleados.AllowUserToAddRows = false;
             GrillaEmpleados.EditMode = DataGridViewEditMode.EditProgrammatically;
@@ -67,12 +70,38 @@ namespace PresentationLayerWinform
 
         private void Listar_Empleados(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Actualizar_Empleados(object sender, EventArgs e)
         {
+            GrillaEmpleados.Rows.Clear();
+            ServiceEmployeesClient servicio = new ServiceEmployeesClient();
+            Employee[] employees = servicio.GetAllEmployees();
+            bindingSource1.DataSource = typeof(EmployeeData);
+            foreach (Employee empleado in employees)
+            {
+                EmployeeData employeeData = loadEmployeeData(empleado);
+                try
+                {
 
+                    bindingSource1.Add(employeeData);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+
+            }
+            //inicializar
+            GrillaEmpleados.AllowUserToAddRows = false;
+            GrillaEmpleados.EditMode = DataGridViewEditMode.EditProgrammatically;
+            GrillaEmpleados.AutoGenerateColumns = false;
+            GrillaEmpleados.AutoSize = true;
+            GrillaEmpleados.DataSource = bindingSource1;
+
+
+     
         }
 
         private void Agregar_Empleados(object sender, EventArgs e)
@@ -91,7 +120,8 @@ namespace PresentationLayerWinform
 
         private void Eliminar_Empleados(object sender, EventArgs e)
         {
-
+            var row = GrillaEmpleados.CurrentRow;
+            GrillaEmpleados.Rows.Remove(row);
         }
 
         private void agregar_columna(string nombrecolumna, string nombrepropiedad)
