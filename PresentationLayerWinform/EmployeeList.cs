@@ -70,7 +70,7 @@ namespace PresentationLayerWinform
 
         private void Listar_Empleados(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Actualizar_Empleados(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace PresentationLayerWinform
                 {
 
                     bindingSource1.Add(employeeData);
-                }
+        }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
