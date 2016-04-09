@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BListar = new System.Windows.Forms.Button();
             this.BEliminar = new System.Windows.Forms.Button();
             this.BModificar = new System.Windows.Forms.Button();
             this.GrillaEmpleados = new System.Windows.Forms.DataGridView();
@@ -37,16 +36,6 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaEmpleados)).BeginInit();
             this.SuspendLayout();
-            // 
-            // BListar
-            // 
-            this.BListar.Location = new System.Drawing.Point(55, 12);
-            this.BListar.Name = "BListar";
-            this.BListar.Size = new System.Drawing.Size(75, 32);
-            this.BListar.TabIndex = 0;
-            this.BListar.Text = "Listar";
-            this.BListar.UseVisualStyleBackColor = true;
-            this.BListar.Click += new System.EventHandler(this.Listar_Empleados);
             // 
             // BEliminar
             // 
@@ -72,8 +61,9 @@
             // 
             this.GrillaEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrillaEmpleados.Location = new System.Drawing.Point(31, 50);
+            this.GrillaEmpleados.MaximumSize = new System.Drawing.Size(500, 150);
             this.GrillaEmpleados.Name = "GrillaEmpleados";
-            this.GrillaEmpleados.Size = new System.Drawing.Size(240, 150);
+            this.GrillaEmpleados.Size = new System.Drawing.Size(357, 150);
             this.GrillaEmpleados.TabIndex = 3;
             // 
             // BAgregar
@@ -100,13 +90,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 262);
+            this.ClientSize = new System.Drawing.Size(501, 262);
             this.Controls.Add(this.BActualizar);
             this.Controls.Add(this.BAgregar);
             this.Controls.Add(this.GrillaEmpleados);
             this.Controls.Add(this.BModificar);
             this.Controls.Add(this.BEliminar);
-            this.Controls.Add(this.BListar);
             this.Name = "EmployeeList";
             this.Text = "EmployeeList";
             this.Load += new System.EventHandler(this.EmployeeList_Load);
@@ -116,16 +105,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button BListar;
         private System.Windows.Forms.Button BEliminar;
         private System.Windows.Forms.Button BModificar;
         private System.Windows.Forms.DataGridView GrillaEmpleados;
         private System.Windows.Forms.Button BAgregar;
         private System.Windows.Forms.Button BActualizar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-
-        
     }
 }
 
