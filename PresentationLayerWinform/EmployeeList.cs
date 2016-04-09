@@ -37,7 +37,6 @@ namespace PresentationLayerWinform
             {
                 try
                 {
-                    
                     bindingSource1.Add((Employee)empleado);
                 }
                 catch(Exception ex)
