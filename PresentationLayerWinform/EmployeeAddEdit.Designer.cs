@@ -117,7 +117,7 @@
             this.inputTipo.Location = new System.Drawing.Point(92, 43);
             this.inputTipo.Name = "inputTipo";
             this.inputTipo.Size = new System.Drawing.Size(121, 21);
-            this.inputTipo.TabIndex = 8;
+            this.inputTipo.TabIndex = 8;            
             this.inputTipo.TextChanged += new System.EventHandler(this.comboBox1_ValueMemberChanged);
             // 
             // inputFechaIngreso
@@ -129,6 +129,7 @@
             // 
             // BCrear
             // 
+            this.BCrear.AccessibleName = "";
             this.BCrear.Location = new System.Drawing.Point(56, 257);
             this.BCrear.Name = "BCrear";
             this.BCrear.Size = new System.Drawing.Size(75, 23);

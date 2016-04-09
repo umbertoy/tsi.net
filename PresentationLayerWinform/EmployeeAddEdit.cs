@@ -29,11 +29,12 @@ namespace PresentationLayerWinform
             inputTipo.Items.Add(Constantes.StrPartTimeEmployee);
             inputTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             this.StartPosition = FormStartPosition.CenterScreen;
-        }
+       }
 
         private void Crear_Empleados(object sender, EventArgs e)
         {
-            if (this.validateData()) {
+            if (this.validateData())
+            {
                 ServiceEmployeesClient servicio = new ServiceEmployeesClient();
                 if (inputTipo.Text.Equals(Constantes.StrFullTimeEmployee))
                 {
@@ -43,7 +44,7 @@ namespace PresentationLayerWinform
                     emp.Salary = Int32.Parse(inputSalario.Text);
                     servicio.AddEmployee(emp);
                 }
-                else if(inputTipo.Text.Equals(Constantes.StrPartTimeEmployee))
+                else if (inputTipo.Text.Equals(Constantes.StrPartTimeEmployee))
                 {
                     PartTimeEmployee emp = new PartTimeEmployee();
                     emp.Name = inputNombre.Text;
@@ -63,7 +64,8 @@ namespace PresentationLayerWinform
                 inputTarifa.Enabled = false;
                 inputSalario.Enabled = true;
             }
-            else if (inputTipo.Text.Equals(Constantes.StrPartTimeEmployee)) {
+            else if (inputTipo.Text.Equals(Constantes.StrPartTimeEmployee))
+            {
                 inputTarifa.Enabled = true;
                 inputSalario.Enabled = false;
             }
@@ -80,11 +82,63 @@ namespace PresentationLayerWinform
             inputTarifa.Text = "";
         }
 
-        private void Guardar_Datos(object sender, EventArgs e) {
+        private void Guardar_Datos(object sender, EventArgs e)
+        {
+            //Console.WriteLine("estoy guardando datos");
+            if (this.validateData())
+            {
+                //Console.WriteLine("entre al validata");
+                ServiceEmployeesClient servicio = new ServiceEmployeesClient();
+                if (inputTipo.Text.Equals(Constantes.StrFullTimeEmployee))
+                {
+                    inputTarifa.Enabled = false;
+                    inputSalario.Enabled = true;
+                    var row = EmployeeList.GrillaEmpleados.CurrentRow;
+                    int id = int.Parse(row.Cells[0].Value.ToString());
+                    FullTimeEmployee emp = (FullTimeEmployee)servicio.GetEmployee(id);
+                    if (!emp.Name.Equals(inputNombre.Text))
+                    {
+                        //Console.WriteLine("entre al if");
+                        emp.Name = inputNombre.Text;
+                        //Console.WriteLine(emp.Name);
+                    }
+                    if (!emp.Salary.Equals(int.Parse(inputSalario.Text)))
+                    {
+
+                        emp.Salary = int.Parse(inputSalario.Text);
+                        Console.WriteLine(emp.Salary);
+                    }
+                    
+                    servicio.UpdateEmployee(emp);
+                }
+                else if (inputTipo.Text.Equals(Constantes.StrPartTimeEmployee))
+                {
+                    inputTarifa.Enabled = true;
+                    inputSalario.Enabled = false;
+                    var row = EmployeeList.GrillaEmpleados.CurrentRow;
+                    int id = int.Parse(row.Cells[0].Value.ToString());
+                    PartTimeEmployee emp = (PartTimeEmployee)servicio.GetEmployee(id);
+                    if (!emp.Name.Equals(inputNombre.Text))
+                    {
+                        //Console.WriteLine("entre al if");
+                        emp.Name = inputNombre.Text;
+                        //Console.WriteLine(emp.Name);
+                    }
+                    if (!emp.HourlyRate.Equals(inputTarifa.Text))
+                    {
+                        emp.HourlyRate = int.Parse(inputTarifa.Text);
+                        Console.WriteLine(emp.HourlyRate);
+                    }
+                    servicio.UpdateEmployee(emp);
+                }
+                MessageBox.Show("El empleado ha sido correctamente modificado", "Va Pa eeee", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+            }
 
         }
 
-        private bool validateData() {
+        private bool validateData()
+        {
             int testSalario;
             double testTarifa;
             bool dataValida = true;
@@ -97,7 +151,7 @@ namespace PresentationLayerWinform
             {
                 dataValida = false;
                 MessageBox.Show("Nombre no puede ser vacío", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+            }
             else if (inputTipo.Text.Equals(Constantes.StrFullTimeEmployee))
             {
                 if (inputSalario.Text.Equals(""))
@@ -134,3 +188,4 @@ namespace PresentationLayerWinform
 
     }
 }
+

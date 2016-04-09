@@ -108,12 +108,14 @@ namespace PresentationLayerWinform
         {
 
             EmployeeAddEdit ventana = new EmployeeAddEdit();
+            ventana.Controls["bGuardar"].Visible = false;
             ventana.Show();
 
         }
 
         private void Modificar_Empleados(object sender, EventArgs e)
         {
+            ServiceEmployeesClient servicio = new ServiceEmployeesClient();
             EmployeeAddEdit ventana = new EmployeeAddEdit();
             var row = GrillaEmpleados.CurrentRow;
             var txt1 = ventana.Controls["inputNombre"];
@@ -123,20 +125,21 @@ namespace PresentationLayerWinform
             var txt5 = ventana.Controls["inputSalario"];
             txt1.Text = row.Cells[1].Value.ToString();
             txt2.Text = row.Cells[3].Value.ToString();
-            txt2.Enabled = false;
-            
+            ventana.Controls["bCrear"].Visible = false;
+            //txt2.Enabled = false;
+
             //txt2.Visible = false;
-            txt3.Visible = false;
+            //txt3.Visible = false;
 
             if (txt2.Equals(Constantes.StrFullTimeEmployee))
-            {
-                txt4.Enabled = false;
-                txt5.Enabled = true;
+            {                              
+                txt4.Visible = false;
+                txt5.Visible = true;               
             }
             else if (txt2.Equals(Constantes.StrPartTimeEmployee))
             {
-                txt4.Enabled = true;
-                txt5.Enabled = false;
+                txt4.Visible = true;
+                txt5.Visible = false;
             }
             //ventana.Controls["inputTipo"] = txt1.Text;
             //if(ventana.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -145,6 +148,8 @@ namespace PresentationLayerWinform
             //}
             ventana.ShowDialog();
         }
+
+
 
         private void Eliminar_Empleados(object sender, EventArgs e)
         {

@@ -7,7 +7,7 @@ using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.SqlClient;
 namespace DataAccessLayer
 {
     public class DALEmployeesEF : IDALEmployees
@@ -54,10 +54,38 @@ namespace DataAccessLayer
             dbContext.SaveChanges();
         }
 
+        //OJOOOOO
         public void UpdateEmployee(Employee emp)
         {
-            throw new NotImplementedException();
-        }
+            Console.WriteLine(emp.GetType());
+
+            if (emp.GetType() == typeof(FullTimeEmployee))
+            {
+                FullTimeEmployee empFT2 = (FullTimeEmployee)emp;
+                EmployeesTPH empFTPH = dbContext.EmployeesTPH.Find(emp.Id);
+                FullTimeEmployeeTPH empFT = (FullTimeEmployeeTPH)empFTPH;                
+                empFT.Name = emp.Name;
+                empFT.SALARY = empFT2.Salary;
+                             
+            }
+            else if (emp.GetType() == typeof(PartTimeEmployee))
+            {
+                PartTimeEmployee empPT = (PartTimeEmployee)emp;
+                EmployeesTPH empTPH = dbContext.EmployeesTPH.Find(emp.Id);
+                PartTimeEmployeeTPH emptPTTPH = (PartTimeEmployeeTPH)empTPH;
+                emptPTTPH.Name = emp.Name;
+                emptPTTPH.RATE = empPT.HourlyRate;             
+                
+            }
+            try
+            {
+                dbContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                e.GetBaseException();
+            }
+        }//finOJOOO
 
         public List<Employee> GetAllEmployees()
         {
