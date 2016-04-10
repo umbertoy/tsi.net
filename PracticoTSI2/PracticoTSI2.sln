@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer2", "ServiceLay
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "..\CrossCutting\Shared.csproj", "{8B1E409E-8EB8-4171-8D99-5DB230DA4889}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayerWeb", "PresentationLayerWeb\PresentationLayerWeb.csproj", "{AD4A3625-D576-48ED-85FF-4944C9DD0666}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8B1E409E-8EB8-4171-8D99-5DB230DA4889}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B1E409E-8EB8-4171-8D99-5DB230DA4889}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B1E409E-8EB8-4171-8D99-5DB230DA4889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD4A3625-D576-48ED-85FF-4944C9DD0666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4A3625-D576-48ED-85FF-4944C9DD0666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4A3625-D576-48ED-85FF-4944C9DD0666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4A3625-D576-48ED-85FF-4944C9DD0666}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
