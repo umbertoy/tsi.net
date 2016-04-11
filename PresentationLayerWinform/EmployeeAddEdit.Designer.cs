@@ -40,6 +40,7 @@
             this.inputFechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.BCrear = new System.Windows.Forms.Button();
             this.BGuardar = new System.Windows.Forms.Button();
+            this.txtTipo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // LNombre
@@ -117,7 +118,7 @@
             this.inputTipo.Location = new System.Drawing.Point(92, 43);
             this.inputTipo.Name = "inputTipo";
             this.inputTipo.Size = new System.Drawing.Size(121, 21);
-            this.inputTipo.TabIndex = 8;            
+            this.inputTipo.TabIndex = 8;
             this.inputTipo.TextChanged += new System.EventHandler(this.comboBox1_ValueMemberChanged);
             // 
             // inputFechaIngreso
@@ -148,11 +149,20 @@
             this.BGuardar.UseVisualStyleBackColor = true;
             this.BGuardar.Click += new System.EventHandler(this.Guardar_Datos);
             // 
+            // txtTipo
+            // 
+            this.txtTipo.Location = new System.Drawing.Point(92, 43);
+            this.txtTipo.Name = "txtTipo";
+            this.txtTipo.Size = new System.Drawing.Size(100, 20);
+            this.txtTipo.TabIndex = 12;
+            this.txtTipo.Visible = false;
+            // 
             // EmployeeAddEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 311);
+            this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.BGuardar);
             this.Controls.Add(this.BCrear);
             this.Controls.Add(this.inputFechaIngreso);
@@ -187,5 +197,6 @@
         private System.Windows.Forms.DateTimePicker inputFechaIngreso;
         private System.Windows.Forms.Button BCrear;
         private System.Windows.Forms.Button BGuardar;
+        private System.Windows.Forms.TextBox txtTipo;
     }
 }
