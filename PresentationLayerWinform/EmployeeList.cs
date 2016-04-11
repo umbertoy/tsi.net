@@ -117,6 +117,7 @@ namespace PresentationLayerWinform
         {
             ServiceEmployeesClient servicio = new ServiceEmployeesClient();
             EmployeeAddEdit ventana = new EmployeeAddEdit();
+            
             var row = GrillaEmpleados.CurrentRow;
             var txt1 = ventana.Controls["inputNombre"];
             var txt2 = ventana.Controls["inputTipo"];
@@ -127,19 +128,30 @@ namespace PresentationLayerWinform
             txt2.Text = row.Cells[3].Value.ToString();
             ventana.Controls["bCrear"].Visible = false;
             //txt2.Enabled = false;
+            txt2.Visible = false;
+            var txt6 = ventana.Controls["txtTipo"];
+            txt6.Visible = true;
+            
+            txt6.Text = row.Cells[3].Value.ToString();
+            txt6.Enabled = false;
 
             //txt2.Visible = false;
             //txt3.Visible = false;
 
-            if (txt2.Equals(Constantes.StrFullTimeEmployee))
+            if (txt6.Text.ToString()== Constantes.StrFullTimeEmployee)
             {                              
                 txt4.Visible = false;
-                txt5.Visible = true;               
+                txt5.Visible = true;
+                FullTimeEmployee empFT = (FullTimeEmployee)servicio.GetEmployee(int.Parse(row.Cells[0].Value.ToString()));
+                txt5.Text = empFT.Salary.ToString();
+                
             }
-            else if (txt2.Equals(Constantes.StrPartTimeEmployee))
+            else if (txt6.Text.ToString() == Constantes.StrPartTimeEmployee)
             {
                 txt4.Visible = true;
                 txt5.Visible = false;
+                PartTimeEmployee empPT = (PartTimeEmployee)servicio.GetEmployee(int.Parse(row.Cells[0].Value.ToString()));
+                txt4.Text = empPT.HourlyRate.ToString();
             }
             //ventana.Controls["inputTipo"] = txt1.Text;
             //if(ventana.ShowDialog() == System.Windows.Forms.DialogResult.OK)

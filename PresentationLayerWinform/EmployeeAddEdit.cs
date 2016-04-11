@@ -53,7 +53,8 @@ namespace PresentationLayerWinform
                     servicio.AddEmployee(emp);
                 }
                 MessageBox.Show("El empleado ha sido correctamente registrado", "Va Pa eeee", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
+                Close();
+                
             }
         }
 
@@ -106,7 +107,7 @@ namespace PresentationLayerWinform
                     {
 
                         emp.Salary = int.Parse(inputSalario.Text);
-                        Console.WriteLine(emp.Salary);
+                        //Console.WriteLine(emp.Salary);
                     }
                     
                     servicio.UpdateEmployee(emp);
@@ -127,12 +128,12 @@ namespace PresentationLayerWinform
                     if (!emp.HourlyRate.Equals(inputTarifa.Text))
                     {
                         emp.HourlyRate = int.Parse(inputTarifa.Text);
-                        Console.WriteLine(emp.HourlyRate);
+                        //Console.WriteLine(emp.HourlyRate);
                     }
                     servicio.UpdateEmployee(emp);
                 }
                 MessageBox.Show("El empleado ha sido correctamente modificado", "Va Pa eeee", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
+                Close();
             }
 
         }
