@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Shared.Entities.Employee>
+﻿@model IEnumerable<PresentationLayerWeb.Models.EmployeeModel>
 
 @{
     ViewBag.Title = "Index";
@@ -17,6 +17,15 @@
         <th>
             @Html.DisplayNameFor(model => model.StartDate)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HourlyRate)
+        </th>
         <th></th>
     </tr>
 
@@ -27,6 +36,15 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HourlyRate)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

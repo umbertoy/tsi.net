@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer;
+using PresentationLayerWeb.Models;
 using Shared.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,16 +13,44 @@ namespace PresentationLayerWeb.Controllers
     {
         private IBLEmployees blHandler = new BLEmployees(new DataAccessLayer.DALEmployeesEF());
         // GET: Employees
+
+        private EmployeeModel EmployeeToModel(Employee employee)
+        {
+            EmployeeModel model = new EmployeeModel();
+            model.Id = employee.Id;
+            model.Name = employee.Name;
+            model.StartDate = employee.StartDate;
+            if (employee.GetType() == typeof(FullTimeEmployee))
+            {
+                FullTimeEmployee empFT = (FullTimeEmployee)employee;
+                model.Type = 1;
+                model.Salary = empFT.Salary;
+            }
+            else if (employee.GetType() == typeof(PartTimeEmployee))
+            {
+                PartTimeEmployee empPT = (PartTimeEmployee)employee;
+                model.Type = 2;
+                model.HourlyRate = empPT.HourlyRate;
+            }
+            return model;
+        }
+
         public ActionResult Index()
         {
             List<Employee> listEmployees = blHandler.GetAllEmployees();
-            return View(listEmployees);
+            List<EmployeeModel> listModel = new List<EmployeeModel>();
+            foreach(Employee employee in listEmployees ){
+                
+                listModel.Add(EmployeeToModel(employee));
+            }
+
+            return View(listModel);
         }
 
         // GET: Employees/Details/5
         public ActionResult Details(int id)
         {
-            return View(blHandler.GetEmployee(id));
+            return View(EmployeeToModel(blHandler.GetEmployee(id)));
         }
 
         // GET: Employees/Create
@@ -49,7 +78,7 @@ namespace PresentationLayerWeb.Controllers
         // GET: Employees/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(EmployeeToModel(blHandler.GetEmployee(id)));
         }
 
         // POST: Employees/Edit/5
