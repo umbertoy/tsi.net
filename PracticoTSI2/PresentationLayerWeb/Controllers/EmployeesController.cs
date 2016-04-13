@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace PresentationLayerWeb.Controllers
 {
@@ -20,16 +21,18 @@ namespace PresentationLayerWeb.Controllers
             model.Id = employee.Id;
             model.Name = employee.Name;
             model.StartDate = employee.StartDate;
+            var listItems = new List<SelectListItem> { new SelectListItem { Text = "Full Time", Value = "1" }, new SelectListItem { Text = "Par time", Value = "2" }, };
+            model.listItems = listItems;
             if (employee.GetType() == typeof(FullTimeEmployee))
             {
                 FullTimeEmployee empFT = (FullTimeEmployee)employee;
-                model.Type = 1;
+                model.Type = (listItems.ToArray())[0];
                 model.Salary = empFT.Salary;
             }
             else if (employee.GetType() == typeof(PartTimeEmployee))
             {
                 PartTimeEmployee empPT = (PartTimeEmployee)employee;
-                model.Type = 2;
+                model.Type = (listItems.ToArray())[1];
                 model.HourlyRate = empPT.HourlyRate;
             }
             return model;
