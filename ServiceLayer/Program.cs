@@ -1,11 +1,9 @@
 ﻿using BusinessLogicLayer;
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceLayer
 {
@@ -21,8 +19,10 @@ namespace ServiceLayer
 
         private static void SetupDependencies()
         {
-            blHandler = new BLEmployees(new DataAccessLayer.DALEmployeesEF());
+            IUnityContainer container = new UnityContainer();
+            blHandler = container.LoadConfiguration("containerOne").Resolve<IBLEmployees>();
         }
+
 
         private static void SetupService()
         {
@@ -31,8 +31,8 @@ namespace ServiceLayer
             binding.HostNameComparisonMode = HostNameComparisonMode.StrongWildcard;
             binding.Security.Mode = BasicHttpSecurityMode.None;
 
-            Uri baseAddress = new Uri("http://127.0.0.1:8181/tsi-net-01-service");
-            Uri address = new Uri("http://127.0.0.1:8181/tsi-net-01-service/Employees");
+            Uri baseAddress = new Uri("http://localhost:8834/tsi1");
+            Uri address = new Uri("http://localhost:8834/tsi1/Employees");
 
             ServiceHost serviceHost = new ServiceHost(typeof(ServiceEmployees), baseAddress);
             serviceHost.AddServiceEndpoint(typeof(IServiceEmployees), binding, address);
