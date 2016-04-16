@@ -17,6 +17,8 @@ namespace BusinessLogicLayer
 
         List<Employee> GetAllEmployees();
 
+        List<EmployeeREST> GetAllEmployeesREST();
+
         Employee GetEmployee(int id);
 
         double CalcPartTimeEmployeeSalary(int idEmployee, int hours);

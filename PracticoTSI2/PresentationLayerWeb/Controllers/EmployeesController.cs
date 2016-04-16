@@ -42,14 +42,19 @@ namespace PresentationLayerWeb.Controllers
         {
             List<Employee> listEmployees = blHandler.GetAllEmployees();
             List<EmployeeModel> listModel = new List<EmployeeModel>();
-            foreach(Employee employee in listEmployees ){
-                
+            foreach (Employee employee in listEmployees)
+            {
+
                 listModel.Add(EmployeeToModel(employee));
             }
 
             return View(listModel);
         }
 
+        public ActionResult IndexAngular()
+        {
+            return View("SPA/employees/employee");
+        }
         // GET: Employees/Details/5
         public ActionResult Details(int id)
         {

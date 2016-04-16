@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace ServiceLayer2.Controllers
 {
-    [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:55306", headers: "*", methods: "*")]
     public class ServiceEmployeesController : ApiController
     {
         //// GET api/<controller>
@@ -18,10 +18,10 @@ namespace ServiceLayer2.Controllers
         //{
         //    return new string[] { "value1", "value2" };
         //}
-        public List<Employee> Get()
+        public List<EmployeeREST> Get()
         {
             IBLEmployees blHandler = new BLEmployees(new DataAccessLayer.DALEmployeesEF());
-            return blHandler.GetAllEmployees();
+            return blHandler.GetAllEmployeesREST();
         }
 
         //// GET api/<controller>/5
