@@ -3,6 +3,25 @@
     <script>var tsiApp;</script>
     @Scripts.Render("~/Script/Angular")
     @Styles.Render("~/Content/Angular")
+
+<script src="~/signalr/hubs"></script>
+<script type="text/javascript">
+        function bootstrap_alert(message) {
+            //$('.body-content').append('<div class="alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><span>' + message + '</span></div>');
+            $('<div class="alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><span>' + message + '</span></div>').insertBefore('.body-content h1')
+        };
+
+        $(function () {
+            // Reference the auto-generated proxy for the hub.
+            var chat = $.connection.tsi1Hub;
+            // Create a function that the hub can call back to display messages.
+            chat.client.addNewMessageToPage = function (message) {
+                // Add the message to the page.
+                bootstrap_alert(message);
+            };
+            $.connection.hub.start();
+        });
+</script>
 }
 
 
@@ -14,3 +33,5 @@
 
 
 </div>
+
+
