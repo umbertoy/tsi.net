@@ -42,12 +42,18 @@ namespace PresentationLayerWeb.Controllers
         {
             List<Employee> listEmployees = blHandler.GetAllEmployees();
             List<EmployeeModel> listModel = new List<EmployeeModel>();
-            foreach(Employee employee in listEmployees ){
-                
+            foreach (Employee employee in listEmployees)
+            {
+
                 listModel.Add(EmployeeToModel(employee));
             }
 
             return View(listModel);
+        }
+
+        public ActionResult IndexAngular()
+        {
+            return View("SPA/employees/employee");
         }
 
         // GET: Employees/Details/5
@@ -79,8 +85,8 @@ namespace PresentationLayerWeb.Controllers
                 {
                     a = collection.Get("StartDate").Substring(3, 3) + collection.Get("StartDate").Substring(0, 2) + collection.Get("StartDate").Substring(5) + " 00:00:00";
                 }
-                         
-                
+
+
                 emp.StartDate = Convert.ToDateTime(a);
                 blHandler.AddEmployee(emp);
             }
@@ -110,11 +116,11 @@ namespace PresentationLayerWeb.Controllers
             if (collection.Get("Type").Equals("1"))
             {
                 FullTimeEmployee emp = (FullTimeEmployee)blHandler.GetEmployee(id);
-                
+
                 emp.Name = collection.Get("Name");
                 emp.Salary = int.Parse(collection.Get("Salary"));
                 var a = collection.Get("StartDate");
-                if (! collection.Get("StartDate").Contains(':'))
+                if (!collection.Get("StartDate").Contains(':'))
                 {
                     a = collection.Get("StartDate").Substring(3, 3) + collection.Get("StartDate").Substring(0, 2) + collection.Get("StartDate").Substring(5) + " 00:00:00";
                 }
@@ -124,8 +130,8 @@ namespace PresentationLayerWeb.Controllers
             if (collection.Get("Type").Equals("2"))
             {
                 PartTimeEmployee emp = (PartTimeEmployee)blHandler.GetEmployee(id);
-                
-               
+
+
                 emp.Name = collection.Get("Name");
                 emp.HourlyRate = int.Parse(collection.Get("HourlyRate"));
                 var a = collection.Get("StartDate");
@@ -138,7 +144,7 @@ namespace PresentationLayerWeb.Controllers
             }
             return RedirectToAction("Index");
         }
-       
+
 
         // GET: Employees/Delete/5
         public ActionResult Delete(int id)
