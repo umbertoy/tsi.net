@@ -42,19 +42,14 @@ namespace PresentationLayerWeb.Controllers
         {
             List<Employee> listEmployees = blHandler.GetAllEmployees();
             List<EmployeeModel> listModel = new List<EmployeeModel>();
-            foreach (Employee employee in listEmployees)
-            {
-
+            foreach(Employee employee in listEmployees ){
+                
                 listModel.Add(EmployeeToModel(employee));
             }
 
             return View(listModel);
         }
 
-        public ActionResult IndexAngular()
-        {
-            return View("SPA/employees/employee");
-        }
         // GET: Employees/Details/5
         public ActionResult Details(int id)
         {
@@ -64,13 +59,32 @@ namespace PresentationLayerWeb.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
-            return View();
+            EmployeeModel model = new EmployeeModel();
+            var listItems = new List<SelectListItem> { new SelectListItem { Text = "Full Time", Value = "1" }, new SelectListItem { Text = "Par time", Value = "2" }, };
+            model.listItems = listItems;
+            return View(model);
         }
 
         // POST: Employees/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
+            if (collection.Get("Type").Equals("1"))
+            {
+                FullTimeEmployee emp = new FullTimeEmployee();
+                emp.Name = collection.Get("Name");
+                emp.Salary = int.Parse(collection.Get("Salary"));
+                var a = collection.Get("StartDate");
+                if (collection.Get("StartDate").IndexOf('/') == 2)
+                {
+                    a = collection.Get("StartDate").Substring(3, 3) + collection.Get("StartDate").Substring(0, 2) + collection.Get("StartDate").Substring(5) + " 00:00:00";
+                }
+                         
+                
+                emp.StartDate = Convert.ToDateTime(a);
+                blHandler.AddEmployee(emp);
+            }
+
             try
             {
                 // TODO: Add insert logic here
@@ -93,43 +107,60 @@ namespace PresentationLayerWeb.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
+            if (collection.Get("Type").Equals("1"))
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                FullTimeEmployee emp = (FullTimeEmployee)blHandler.GetEmployee(id);
+                
+                emp.Name = collection.Get("Name");
+                emp.Salary = int.Parse(collection.Get("Salary"));
+                var a = collection.Get("StartDate");
+                if (! collection.Get("StartDate").Contains(':'))
+                {
+                    a = collection.Get("StartDate").Substring(3, 3) + collection.Get("StartDate").Substring(0, 2) + collection.Get("StartDate").Substring(5) + " 00:00:00";
+                }
+                emp.StartDate = Convert.ToDateTime(a);
+                blHandler.UpdateEmployee(emp);
             }
-            catch
+            if (collection.Get("Type").Equals("2"))
             {
-                return View();
+                PartTimeEmployee emp = (PartTimeEmployee)blHandler.GetEmployee(id);
+                
+               
+                emp.Name = collection.Get("Name");
+                emp.HourlyRate = int.Parse(collection.Get("HourlyRate"));
+                var a = collection.Get("StartDate");
+                if (!collection.Get("StartDate").Contains(':'))
+                {
+                    a = collection.Get("StartDate").Substring(3, 3) + collection.Get("StartDate").Substring(0, 2) + collection.Get("StartDate").Substring(5) + " 00:00:00";
+                }
+                emp.StartDate = Convert.ToDateTime(a);
+                blHandler.UpdateEmployee(emp);
             }
+            return RedirectToAction("Index");
         }
+       
 
         // GET: Employees/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            blHandler.DeleteEmployee(id);
+            return RedirectToAction("Index");
         }
 
-        // POST: Employees/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+        //// POST: Employees/Delete/5
+        //[HttpPost]
+        //public ActionResult Delete(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        public ActionResult Chat()
-        {
-            return View();
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }
