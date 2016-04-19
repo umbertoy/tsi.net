@@ -99,6 +99,21 @@ namespace PresentationLayerWeb.Controllers
                     emp.StartDate = Convert.ToDateTime(a);
                     blHandler.AddEmployee(emp);
                 }
+                else if (collection.Get("Type").Equals("2"))
+                {
+                    PartTimeEmployee emp = new PartTimeEmployee();
+                    emp.Name = collection.Get("Name");
+                    emp.HourlyRate = int.Parse(collection.Get("HourlyRate"));
+                    var a = collection.Get("StartDate");
+                    if (collection.Get("StartDate").IndexOf('/') == 2)
+                    {
+                        a = collection.Get("StartDate").Substring(3, 3) + collection.Get("StartDate").Substring(0, 2) + collection.Get("StartDate").Substring(5) + " 00:00:00";
+                    }
+
+
+                    emp.StartDate = Convert.ToDateTime(a);
+                    blHandler.AddEmployee(emp);
+                }
 
                 var connection = GlobalHost.ConnectionManager.GetHubContext<tsi1Hub>();
 
