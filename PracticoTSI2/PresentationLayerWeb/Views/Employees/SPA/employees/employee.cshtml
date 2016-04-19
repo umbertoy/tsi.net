@@ -18,6 +18,7 @@
             chat.client.addNewMessageToPage = function (message) {
                 // Add the message to the page.
                 bootstrap_alert(message);
+                angular.element('#tsi').scope().reloadGrid();
             };
             $.connection.hub.start();
         });
@@ -27,7 +28,7 @@
 
 
 
-<div ng-app="tsi" class="container" ng-controller="employeesCtrl" data-ng-init="init()">
+<div id="tsi" ng-app="tsi" class="container" ng-controller="employeesCtrl" data-ng-init="init()">
     <h1> Listado de Empleados </h1>
     <div ui-grid="gridOptions" class="gridStyle"></div>
 

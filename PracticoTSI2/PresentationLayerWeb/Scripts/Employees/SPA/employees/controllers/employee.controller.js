@@ -35,5 +35,16 @@
                 $scope.status = 'Unable to retrieve employees: ' + error.message;
             });
         };
+
+        $scope.reloadGrid = function(){
+            employeesService.getEmployees().then(function (response) {
+                $scope.employees = response.data;
+                $scope.gridOptions.data = $scope.employees;
+            }, function (error) {
+                alert("error");
+                $scope.status = 'Unable to retrieve employees: ' + error.message;
+            });
+        }
+
     }
 })()
