@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>EmployeeModel</h4>
         <hr />
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control .datepicker" } })
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="Salary">
             @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div style="display: none" class="form-group" id="Rate">
             @Html.LabelFor(model => model.HourlyRate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.HourlyRate, new { htmlAttributes = new { @class = "form-control" } })
@@ -74,4 +74,18 @@
                 $(".datepicker").datepicker();
             });
     </script>
+
+@Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript"> 
+        $('#Type').on('change' ,function () {
+            if ($('#Type').val() == "1") {
+                $('#Salary').show();
+                $('#Rate').hide();
+            }
+            else {
+                $('#Salary').hide();
+                $('#Rate').show();
+            }
+        });
+    </script> 
 }

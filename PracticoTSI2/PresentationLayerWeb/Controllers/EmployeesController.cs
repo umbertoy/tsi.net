@@ -23,7 +23,7 @@ namespace PresentationLayerWeb.Controllers
             model.Id = employee.Id;
             model.Name = employee.Name;
             model.StartDate = employee.StartDate;
-            var listItems = new List<SelectListItem> { new SelectListItem { Text = "Full Time", Value = "1" }, new SelectListItem { Text = "Par time", Value = "2" }, };
+            var listItems = new List<SelectListItem> { new SelectListItem { Text = "Full Time", Value = "1" }, new SelectListItem { Text = "Part time", Value = "2" }, };
             model.listItems = listItems;
             if (employee.GetType() == typeof(FullTimeEmployee))
             {
@@ -73,7 +73,7 @@ namespace PresentationLayerWeb.Controllers
         public ActionResult Create()
         {
             EmployeeModel model = new EmployeeModel();
-            var listItems = new List<SelectListItem> { new SelectListItem { Text = "Full Time", Value = "1" }, new SelectListItem { Text = "Par time", Value = "2" }, };
+            var listItems = new List<SelectListItem> { new SelectListItem { Text = "Full Time", Value = "1" }, new SelectListItem { Text = "Part time", Value = "2" }, };
             model.listItems = listItems;
             return View(model);
         }
@@ -94,8 +94,19 @@ namespace PresentationLayerWeb.Controllers
                     {
                         a = collection.Get("StartDate").Substring(3, 3) + collection.Get("StartDate").Substring(0, 2) + collection.Get("StartDate").Substring(5) + " 00:00:00";
                     }
-
-
+                    emp.StartDate = Convert.ToDateTime(a);
+                    blHandler.AddEmployee(emp);
+                }
+                else
+                {
+                    PartTimeEmployee emp = new PartTimeEmployee();
+                    emp.Name = collection.Get("Name");
+                    emp.HourlyRate = int.Parse(collection.Get("HourlyRate"));
+                    var a = collection.Get("StartDate");
+                    if (collection.Get("StartDate").IndexOf('/') == 2)
+                    {
+                        a = collection.Get("StartDate").Substring(3, 3) + collection.Get("StartDate").Substring(0, 2) + collection.Get("StartDate").Substring(5) + " 00:00:00";
+                    }
                     emp.StartDate = Convert.ToDateTime(a);
                     blHandler.AddEmployee(emp);
                 }
@@ -105,7 +116,7 @@ namespace PresentationLayerWeb.Controllers
                 connection.Clients.All.addNewMessageToPage("Se creo un nuevo empleado");
                 return RedirectToAction("Index");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return View();
             }
@@ -114,7 +125,32 @@ namespace PresentationLayerWeb.Controllers
         // GET: Employees/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(EmployeeToModel(blHandler.GetEmployee(id)));
+            EmployeeModel model = new EmployeeModel();
+            Employee employee = blHandler.GetEmployee(id);
+            if (employee.GetType() == typeof(FullTimeEmployee))
+            {
+                FullTimeEmployee empFT = (FullTimeEmployee)employee;
+                model.Id = empFT.Id;
+                model.Name = empFT.Name;
+                model.Salary = empFT.Salary;
+                model.StartDate = empFT.StartDate;
+                var listItems = new List<SelectListItem> { new SelectListItem { Text = "Full Time", Value = "1" }, };
+                model.listItems = listItems;
+                
+            }
+            else if (employee.GetType() == typeof(PartTimeEmployee))
+            {
+                PartTimeEmployee empFT = (PartTimeEmployee)employee;
+                
+                model.Id = empFT.Id;
+                model.Name = empFT.Name;
+                model.HourlyRate = empFT.HourlyRate;
+                model.StartDate = empFT.StartDate;
+                var listItems = new List<SelectListItem> { new SelectListItem { Text = "Part Time", Value = "2" }, };
+                model.listItems = listItems;                
+            }
+
+            return View(model);
         }
 
         // POST: Employees/Edit/5
@@ -123,8 +159,8 @@ namespace PresentationLayerWeb.Controllers
         {
             if (collection.Get("Type").Equals("1"))
             {
-                FullTimeEmployee emp = (FullTimeEmployee)blHandler.GetEmployee(id);
 
+                FullTimeEmployee emp = (FullTimeEmployee)blHandler.GetEmployee(id);
                 emp.Name = collection.Get("Name");
                 emp.Salary = int.Parse(collection.Get("Salary"));
                 var a = collection.Get("StartDate");
@@ -135,11 +171,10 @@ namespace PresentationLayerWeb.Controllers
                 emp.StartDate = Convert.ToDateTime(a);
                 blHandler.UpdateEmployee(emp);
             }
-            if (collection.Get("Type").Equals("2"))
+            
+            else if (collection.Get("Type").Equals("2"))
             {
                 PartTimeEmployee emp = (PartTimeEmployee)blHandler.GetEmployee(id);
-
-
                 emp.Name = collection.Get("Name");
                 emp.HourlyRate = int.Parse(collection.Get("HourlyRate"));
                 var a = collection.Get("StartDate");

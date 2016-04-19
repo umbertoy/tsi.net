@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>EmployeeModel</h4>
         <hr />
@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="Salary">
             @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="Rate">
             @Html.LabelFor(model => model.HourlyRate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.HourlyRate, new { htmlAttributes = new { @class = "form-control" } })
@@ -74,6 +74,20 @@
     <script type="text/javascript">
         $(function () {
             $(".datepicker").datepicker();
+        });
+    </script>
+   
+     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($("#Type").val() == '1') {
+                $('#Salary').show();
+                $('#Rate').hide();
+            }
+            else {
+                $('#Salary').hide();
+                $('#Rate').show();
+            }
         });
     </script>
 }
